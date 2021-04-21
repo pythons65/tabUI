@@ -1,0 +1,88 @@
+:root {
+  --mainAreaWidth: 500px;
+  --mainAreaHeight: 400px;
+  --activeTabPosition: 0px;
+  --activeTabIndicatorWidth: 33.33%;
+  --tabAddBtnRadius:30px;
+  --tabsTopMargin:30px;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.mainArea {
+  width: var(--mainAreaWidth);
+  height: var(--mainAreaHeight);
+  background-color: #d9d8da;
+  border-radius: 10px;
+  position: relative;
+}
+.mainArea .tabs {
+  position: relative;
+  margin-top: var(--tabsTopMargin);
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-family: monospace;
+  font-size: 1.2em;
+}
+.mainArea .tabs::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: #ff18d6;
+  position: absolute;
+  top: 40px;
+  width: var(--activeTabIndicatorWidth);
+  left: var(--activeTabPosition);
+  transition: 0.3s;
+}
+.mainArea .tabs .tab {
+  --height: 40px;
+  --width: 100%;
+  cursor: pointer;
+  width: var(--width);
+  height: var(--height);
+  text-align: center;
+  vertical-align: center;
+  line-height: var(--height);
+}
+.mainArea .tabs .tab:hover {
+  background-color: rgba(255, 112, 171, 0.2);
+}
+.mainArea .contentArea {
+  margin: 0 10px;
+  position: relative;
+}
+.mainArea .contentArea .content {
+  position: absolute;
+}
+.mainArea .contentArea .content[data-viewIndex=back] {
+  z-index: -1;
+}
+.mainArea .tabAddArea .addTab{
+  width:var(--tabAddBtnRadius);
+  height: var(--tabAddBtnRadius);
+  background-color: gray;
+  border-radius: 100%;
+  border:none;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  left: var(--mainAreaWidth);
+  margin-left: 10px;
+  top:calc(var(--tabsTopMargin) + 4px);
+  display: grid;
+  place-items:center;
+}
+
+.mainArea .tabAddArea .addTab:hover{
+  background-color: rgb(100,100,100);
+}
+
+.mainArea .tabAddArea .addTab:active{
+  background-color: rgb(120,120,120);
+}
